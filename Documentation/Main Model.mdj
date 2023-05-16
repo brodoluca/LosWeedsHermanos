@@ -17,7 +17,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "BlockDefinitionDiagram1",
+					"name": "EnvironmentBlockDefinitionDiagram",
 					"ownedViews": [
 						{
 							"_type": "UMLFrameView",
@@ -38,9 +38,9 @@
 									"font": "Arial;13;0",
 									"left": 160.68994140625,
 									"top": 101,
-									"width": 143.33984375,
+									"width": 209.0888671875,
 									"height": 13,
-									"text": "BlockDefinitionDiagram1"
+									"text": "EnvironmentBlockDefinitionDiagram"
 								},
 								{
 									"_type": "LabelView",
@@ -3696,7 +3696,7 @@
 											"font": "Arial;13;1",
 											"left": 141,
 											"top": 87,
-											"width": 718,
+											"width": 511,
 											"height": 13,
 											"text": "Autonomous Driving"
 										},
@@ -3729,7 +3729,7 @@
 									"font": "Arial;13;0",
 									"left": 136,
 									"top": 80,
-									"width": 728,
+									"width": 521,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIHr15VgjZihg="
@@ -3748,7 +3748,7 @@
 							"font": "Arial;13;0",
 							"left": 136,
 							"top": 80,
-							"width": 728,
+							"width": 521,
 							"height": 528,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIHr15VgjYRrg="
@@ -19507,7 +19507,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGIIvDrY7NzXjM="
 									},
-									"name": "ActivityDiagram1",
+									"name": "BehaviourActivityDiagram",
 									"ownedViews": [
 										{
 											"_type": "UMLControlNodeView",
@@ -20062,11 +20062,11 @@
 																"$ref": "AAAAAAGIIvRpcLRWLVY="
 															},
 															"font": "Arial;13;1",
-															"left": 175,
+															"left": 172,
 															"top": 399,
-															"width": 169.08251953125,
+															"width": 176.3125,
 															"height": 13,
-															"text": "Calculate vehicle kinematic"
+															"text": "Calculate vehicle kinematics"
 														},
 														{
 															"_type": "LabelView",
@@ -20093,9 +20093,9 @@
 														}
 													],
 													"font": "Arial;13;0",
-													"left": 170,
+													"left": 167,
 													"top": 392,
-													"width": 179.08251953125,
+													"width": 186.3125,
 													"height": 25,
 													"stereotypeLabel": {
 														"$ref": "AAAAAAGIIvRpcLRXlxw="
@@ -20113,9 +20113,9 @@
 											],
 											"font": "Arial;13;0",
 											"containerChangeable": true,
-											"left": 170,
+											"left": 167,
 											"top": 392,
-											"width": 179.08251953125,
+											"width": 186.3125,
 											"height": 41,
 											"nameCompartment": {
 												"$ref": "AAAAAAGIIvRpcLRWLVY="
@@ -21357,7 +21357,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGIIvDrY7NzXjM="
 									},
-									"name": "Calculate vehicle kinematic"
+									"name": "Calculate vehicle kinematics"
 								},
 								{
 									"_type": "UMLAction",
