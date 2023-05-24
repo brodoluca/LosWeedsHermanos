@@ -5,6 +5,28 @@
 4. save the image name & the coordinate of the point in a .csv file
 5. repeat 1-4 until all images are done
 '''
+
+'''
+    Cool, but did you think of opening the video directly with opencv and analize it frame by frame?
+
+    import cv2
+    cap = cv2.VideoCapture("./out.mp4")
+
+    while True:
+        if cap.grab():
+            flag, frame = cap.retrieve()
+            if not flag:
+                continue
+            else:
+                cv2.imshow('video', frame)
+        if cv2.waitKey(10) == 27:
+            break
+
+    If I didnt misunderstand, this script wans a list of jpeg. In the snippet above, "frame" is the image and you can use
+    it to label
+'''
+
+
 import os
 import cv2
 import csv
