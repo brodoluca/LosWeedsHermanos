@@ -3,4 +3,4 @@ gym-master
 AuthKey.txt
 *.p
 *.mp4
-Traffic Signs Detection
+tf_detection
