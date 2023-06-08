@@ -14,4 +14,9 @@ __pycache__
 .ipynb_checkpoints
 *.zip
 resnet18_pretrained_traffic_lights
-resnet18_for_mnclass_98.pth
+!mobilenet_cat1-2.pth
+!resnet18_for_mnclass_98.pth
+
+#!resnet18_for_mnclass_98.pth
+#!resnet18_for_mnclass_98.pth
+#!resnet18_for_mnclass_98.pth
