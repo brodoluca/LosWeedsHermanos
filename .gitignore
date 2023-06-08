@@ -7,3 +7,11 @@ tf_detection
 firstVideo.mp4
 firstVideo.mp4:Zone.Identifier
 .vscode/settings.json
+__pycache__
+*.pth
+*.jpg
+*.csv
+.ipynb_checkpoints
+*.zip
+resnet18_pretrained_traffic_lights
+resnet18_for_mnclass_98.pth

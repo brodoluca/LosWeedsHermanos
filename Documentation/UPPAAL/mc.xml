@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+
+const int N = 4;
+
+chan WeedPosition[2];
+chan unhealthyPosition;
+chan WeedEliminated;
+
+chan PlantProtected;
+
+chan UnhealthyWeed;
+
+
+chan obs_2_coo_weed[N];
+chan obs_2_coo_prot[N];
+
+
+chan coo_2_obs[N];
+//chan coo_2_obs_prot[2];
+
+
+chan coo_2_weed[N];
+chan coo_2_prot[N];
+
+
+
+chan weed_2_coo[N];
+chan prot_2_coo[N];</declaration>
+	<template>
+		<name x="5" y="5">Weeder</name>
+		<parameter>int id</parameter>
+		<declaration>// Place local declarations here.
+clock x;</declaration>
+		<location id="id0" x="-399" y="-42">
+		</location>
+		<location id="id1" x="-263" y="-42">
+			<name x="-246" y="-51">Idle</name>
+		</location>
+		<location id="id2" x="-76" y="-136">
+			<name x="-86" y="-170">EliminateWeed</name>
+			<label kind="invariant" x="-51" y="-144">x&lt;=3</label>
+		</location>
+		<init ref="id0"/>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-297" y="-170">coo_2_weed[id]?</label>
+			<label kind="assignment" x="-255" y="-119">x:=0</label>
+			<nail x="-263" y="-136"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-144" y="59">weed_2_coo[id]!</label>
+			<nail x="-76" y="51"/>
+			<nail x="-263" y="51"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id1"/>
+		</transition>
+	</template>
+	<template>
+		<name>Protector</name>
+		<parameter>int id</parameter>
+		<declaration>clock x;</declaration>
+		<location id="id3" x="68" y="-8">
+		</location>
+		<location id="id4" x="204" y="-8">
+			<name x="221" y="-17">Idle</name>
+		</location>
+		<location id="id5" x="391" y="-102">
+			<name x="381" y="-136">ProtectPlant</name>
+			<label kind="invariant" x="416" y="-110">x&lt;=3</label>
+		</location>
+		<init ref="id3"/>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="170" y="-136">coo_2_prot[id]?</label>
+			<label kind="assignment" x="212" y="-85">x:=0</label>
+			<nail x="204" y="-102"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="323" y="93">prot_2_coo[id]!</label>
+			<nail x="391" y="85"/>
+			<nail x="204" y="85"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id4"/>
+		</transition>
+	</template>
+	<template>
+		<name>Observer</name>
+		<parameter>int id</parameter>
+		<declaration>clock x;</declaration>
+		<location id="id6" x="-408" y="-195">
+		</location>
+		<location id="id7" x="-408" y="-374">
+			<name x="-467" y="-408">ProblemIdentification</name>
+		</location>
+		<location id="id8" x="-195" y="-374">
+			<name x="-162" y="-391">Weed</name>
+		</location>
+		<location id="id9" x="-408" y="-263">
+			<name x="-476" y="-229">Scanner</name>
+		</location>
+		<location id="id10" x="-603" y="-374">
+			<name x="-654" y="-408">Protection</name>
+		</location>
+		<init ref="id6"/>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-722" y="-280">coo_2_obs[id]?</label>
+			<nail x="-603" y="-263"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-569" y="-365">obs_2_coo_prot[id]!</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-178" y="-289">coo_2_obs[id]?</label>
+			<nail x="-195" y="-263"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-365" y="-365">obs_2_coo_weed[id]!</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id7"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id9"/>
+		</transition>
+	</template>
+	<template>
+		<name>Coordinator</name>
+		<parameter>int assigned_observer,int assigned_weeder, int assigned_protector</parameter>
+		<location id="id11" x="-799" y="-127">
+		</location>
+		<location id="id12" x="-688" y="-127">
+			<name x="-739" y="-153">Ready</name>
+		</location>
+		<location id="id13" x="-688" y="-263">
+			<name x="-748" y="-306">CommToWeeder</name>
+		</location>
+		<location id="id14" x="-408" y="-263">
+			<name x="-399" y="-289">WeederInformed</name>
+		</location>
+		<location id="id15" x="-408" y="-127">
+			<name x="-382" y="-136">CommtoObserver</name>
+		</location>
+		<location id="id16" x="-688" y="-8">
+			<name x="-748" y="25">CommToProtector</name>
+		</location>
+		<location id="id17" x="-408" y="-8">
+		</location>
+		<init ref="id11"/>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id15"/>
+			<label kind="synchronisation" x="-399" y="-85">prot_2_coo[assigned_protector]?</label>
+		</transition>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-680" y="-170">coo_2_obs[assigned_observer]!</label>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id15"/>
+			<label kind="synchronisation" x="-399" y="-212">weed_2_coo[assigned_weeder]?</label>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id17"/>
+			<label kind="synchronisation" x="-671" y="0">coo_2_prot[assigned_protector]!</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id16"/>
+			<label kind="synchronisation" x="-969" y="-85">obs_2_coo_prot[assigned_observer]?</label>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id14"/>
+			<label kind="synchronisation" x="-663" y="-289">coo_2_weed[assigned_weeder]!</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="-969" y="-238">obs_2_coo_weed[assigned_observer]?</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id12"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+//weeder = Weeder(1);
+
+//protector = Protector(1);
+
+//observer = Observer(1);
+
+//coordinator = Coordinator(1,1,1);
+// List one or more processes to be composed into a system.
+//for (i: int = 0; i &lt; N; i = i + 1) {
+    // Code to be executed inside the loop
+    // ...
+//};
+
+//const int N=0; // number of items
+typedef int[1,N] id_t; // bounded integer type with values [1..N]
+int[1,N] var; // array of bounded integers indexed by id_t range [1..N]
+//P(const id_t id) = Protector(0);
+
+//system P; // instantiate P(1)..P(N) by filling the constant values from id_t range
+
+//system weeder, coordinator, observer,protector;
+system Protector {
+    // Process and template declarations
+    Protector P[N];
+    // Initialization process
+    process InitProcess {
+        // InitProcess declarations and other components
+        
+        // Assign each protector to a different value from 1 to N
+        for (id_t id: id_t) {
+            P[id] = Protector(var[id]);
+        }
+        
+        // Code after initialization
+        // ...
+    }
+};
+
+
+
+
+
+ 
+</system>
+	<queries>
+		<query>
+			<formula>A[] not deadlock</formula>
+			<comment></comment>
+		</query>
+	</queries>
+</nta>
