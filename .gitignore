@@ -17,6 +17,6 @@ resnet18_pretrained_traffic_lights
 !mobilenet_cat1-2.pth
 !resnet18_for_mnclass_98.pth
 
-#!mobilenet_points_sac.pth
-#!mobilenet_points_final.pth
-#!resnet18_for_mnclass_98.pth
+!mobilenet_points_sac.pth
+!mobilenet_points_final.pth
+!road_following_model9_trt_final.pth
