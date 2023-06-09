@@ -62,13 +62,13 @@ moves = [
     Generates a list of possible moves given two lists of possible values
 '''
 def move_generator(
-                        possible_accellerations = [0, 0.3, 0.5, 0.7, 1],
-                        possible_steering= [-1,-0.7, -0.5, -0.3, 0, 0.3, 0.5, 0.7, 1]
+                        possible_accellerations = [0, 0.2, 0.4, 0.6, 0.8, 1],
+                        possible_steering= [-1,-0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1]
                     ):
     print("[")
     index = 0
-    for i in possible_accellerations:
-        for x in possible_steering:
+    for i in possible_steering:
+        for x in possible_accellerations:
             print(f"    [{i}, {x}], # move n. {index}")
             index+=1
     print("]")
