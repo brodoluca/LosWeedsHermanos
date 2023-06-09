@@ -5,7 +5,7 @@ AuthKey.txt
 *.mp4
 tf_detection
 firstVideo.mp4
-firstVideo.mp4:Zone.Identifier
+*:Zone.Identifier
 .vscode/settings.json
 __pycache__
 *.pth
